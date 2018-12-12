@@ -1,0 +1,19 @@
+{
+  "name": "todos-nodejs",
+  "version": "1.0.0",
+  "description": "Nodejs rest API for http://todomvc.com",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "corbs",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cfenv": "^1.0.4",
+    "express": "^4.16.0",
+    "redis": "^2.8.0",
+    "body-parser": "^1.18.1"
+  },
+  "engines": {
+    "node": "^10.0.0"
+  }
+}

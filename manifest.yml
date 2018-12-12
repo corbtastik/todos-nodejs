@@ -1,0 +1,8 @@
+---
+applications:
+- name: todos-nodejs
+  random-route: true
+  memory: 512MB
+  command: node app.js
+  services:
+   - todos-cache
