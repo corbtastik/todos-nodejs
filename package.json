@@ -6,9 +6,9 @@
     "start": "node app.js"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/corbtastik/todos-nodejs.git"
-  },  
+    "type": "git",
+    "url": "https://github.com/corbtastik/todos-nodejs.git"
+  },
   "author": "corbs",
   "license": "Apache-2.0",
   "dependencies": {
@@ -16,6 +16,6 @@
     "body-parser": "^1.18.1"
   },
   "engines": {
-    "node": "^10.14.0"
+    "node": "10.14.1"
   }
 }

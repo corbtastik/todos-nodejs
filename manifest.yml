@@ -4,3 +4,7 @@ applications:
   random-route: true
   memory: 512MB
   command: node app.js
+  buildpacks: 
+  - nodejs_buildpack
+  env:
+    TODOS_API_LIMIT: 64

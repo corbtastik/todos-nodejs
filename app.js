@@ -1,4 +1,4 @@
-const APP_PORT = process.env.PORT || 8081;
+const APP_PORT = process.env.PORT || 8080;
 const APP_HOST = process.env.HOST || "0.0.0.0";
 const TODOS_API_LIMIT = process.env.TODOS_API_LIMIT || 32;
 const express = require('express');
@@ -8,6 +8,13 @@ app.use(express.json());
 // { "title" : "Make Bacon Pancakes", "completed" : true }
 const todos = [];
 var seq = 1;
+
+app.get('/limit', function(request, response) {
+    response.send({
+        "limit" : TODOS_API_LIMIT,
+        "size" : todos.length
+    });
+});
 
 app.get('/', function(request, response) {
     response.send(todos);
@@ -56,6 +63,7 @@ app.delete('/:id', function(request, response) {
             response.send(item);
         }
     }); 
+    response.status(404).send("Not found todo.id=" + request.params.id);
 });
 
 app.listen(APP_PORT, function() {
