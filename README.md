@@ -4,7 +4,7 @@ Howdy! This is a Todo(s) backing API implemented in [Node.js](https://nodejs.org
 
 ## Pushing to Cloud Foundry
 
-This app is ready to push to Cloud Foundry and will rely on the Node.js Buildpack to automate containerization of the app bits.
+This app is ready to push to Cloud Foundry and will rely on the Node.js Buildpack to automate containerization of the app.
 
 1. Specify version of Node.js to use
 1. Cloud Foundry vendoring
@@ -14,19 +14,19 @@ This app is ready to push to Cloud Foundry and will rely on the Node.js Buildpac
 
 ## Specify version of Node.js to use
 
-You can [target the proper Node.js version](https://docs.cloudfoundry.org/buildpacks/node/index.html#runtime) to use by supplying this information in ``package.json`` or leave it undefined and CF will use the lowest LTS release of Node.js supported by the Node.js Buildpack being used.  This is one of the benefits of CF, that is the Buildpack provides a means to control and upgrade multiple versions of the Node.js middleware stack from 6.x to 11.x so you don't have to :)
+You can [target the proper Node.js version](https://docs.cloudfoundry.org/buildpacks/node/index.html#runtime) to use by supplying this information in ``package.json`` or leave it undefined and CF will use the lowest LTS release of Node.js supported by [Buildpack](https://github.com/cloudfoundry/nodejs-buildpack/releases/latest) being used.  This is one of the benefits of CF, that is the Buildpack provides a means to control and upgrade multiple versions of the Node.js middleware stack from 6.x to 11.x so you don't have to :)
 
 ```json
 {
   "engines": {
-    "node": "^10.14.0"
+    "node": "10.14.1"
   }
 }
 ```
 
 ## Cloud Foundry vendoring
 
-If you want CF to handle vendoring of your Node.js dependencies it gladly will do so.  You can simply clone this sample and push the code "as is" to CF and the Node.js Buildpack will run ``npm install`` during the containerization and pull down dependencies from the [public NPM registry](https://registry.npmjs.org).  This is great for convenience but often deployments of CF are air-gapped and can't reach such registries.
+If you want CF to handle vendoring of your Node.js dependencies it will gladly do so.  You can simply clone this sample and push the code "as is" to CF and the Node.js Buildpack will run ``npm install`` and pull down dependencies from the [public NPM registry](https://registry.npmjs.org).  This is great for convenience but often deployments of CF are air-gapped and can't reach such registries.
 
 If we clone and push this sample un-vendored (as provided) then all resolved dependencies will coming from ``https://registry.npmjs.org`` and be placed into ``node_modules`` along with ``package-lock.json`` file that describes the resolved dependencies in ``node_modules``.
 
@@ -38,7 +38,7 @@ package.json
 
 ## Vendor using npm
 
-Before we push to CF we can vendor by running ``npm install`` to pull down dependencies and generate the ``package-lock.json`` file.  If we push at this point we can provide a fully encapsulated app for CF, thus it will not run ``npm install`` and will simply use our vendored dependencies in ``node_modules``.  In this case the registry will be ``https://registry.npmjs.org``.
+Before we push to CF we can vendor by running ``npm install`` to pull down dependencies and generate the ``package-lock.json`` file.  If we push at this point we can provide a fully encapsulated app for CF, thus it will not run ``npm install`` and will simply use our vendored dependencies in ``node_modules``.
 
 ```bash
 app.js
