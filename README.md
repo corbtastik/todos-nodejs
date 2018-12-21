@@ -19,7 +19,11 @@ You can [target the proper Node.js version](https://docs.cloudfoundry.org/buildp
 ```json
 {
   "engines": {
+<<<<<<< HEAD
     "node": "10.14.1"
+=======
+    "node": "10.14.0"
+>>>>>>> dcb97c2fd989b2bf22ae5661b2b75286b4bb6905
   }
 }
 ```
